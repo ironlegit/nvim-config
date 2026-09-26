@@ -7,15 +7,34 @@ return {
         -- ### Ansible ###
         ansiblels = {},
 
-        -- ## R ##
-        r_language_server = {
-          root_markers = { "DESCRIPTION", "NAMESPACE", ".Rbuildignore" },
-        },
+        -- ### Docker ###
+        dockerls = {},
+        docker_compose_language_service = {},
+
         -- ### Frontend ###
         html = {},
         cssls = {},
 
         -- ### JSON ---
+        jsonls = {
+          -- lazy-load schemastore when needed
+          before_init = function(_, new_config)
+            new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+            vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+          end,
+          settings = {
+            json = {
+              format = {
+                enable = true,
+              },
+              validate = { enable = true },
+            },
+          },
+        },
+        -- ### R ###
+        r_language_server = {
+          root_markers = { "DESCRIPTION", "NAMESPACE", ".Rbuildignore" },
+        },
 
         -- ### YAML ###
         yamlls = {
