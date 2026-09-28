@@ -1,6 +1,21 @@
 return {
   "nvimdev/dashboard-nvim",
   event = "VimEnter",
+
+  init = function()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      callback = function()
+        vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#158C5B" })
+        vim.api.nvim_set_hl(0, "DashboardDesc", { fg = "#158C5B" })
+        vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#49E4A3" })
+        vim.api.nvim_set_hl(0, "DashboardKey", { fg = "#49E4A3" })
+        -- vim.api.nvim_set_hl(0, "DashboardCenter", { fg = "#cdd6f4" })
+        -- vim.api.nvim_set_hl(0, "DashboardShortCut", { fg = "#f38ba8" })
+        vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#48D9CD", italic = true })
+      end,
+    })
+  end,
+
   opts = function()
     local header = [[
                                                                                                    Z 
