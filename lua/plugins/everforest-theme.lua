@@ -6,8 +6,7 @@ return {
     -- Optionally configure and load the colorscheme
     -- directly inside the plugin declaration.
     vim.g.everforest_background = "hard"
-    vim.g.everforest_enable_italic = true
-    vim.g.everforest_disable_italic_comment = true
+    vim.g.everforest_enable_italic = 1
     vim.g.everforest_transparent_background = 1
 
     vim.cmd.colorscheme("everforest")
